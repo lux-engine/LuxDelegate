@@ -92,6 +92,8 @@ namespace Lux
     template<class R, class... Args> class Delegate
     {
     public:
+        inline constexpr Delegate() noexcept = default;
+        
         inline constexpr R operator()(Args&&... args) const noexcept requires Meta::IsConstructible<R, Args...>
         {
             return R(args...);
